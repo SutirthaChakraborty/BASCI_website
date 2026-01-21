@@ -834,6 +834,7 @@
 .audio-toggle {
     border: 0;
     cursor: pointer;
+    animation: shake 3s ease-in-out infinite;
 }
 
 .audio-toggle:focus-visible {
@@ -851,6 +852,11 @@
         left: var(--space-4);
         bottom: var(--space-4);
     }
+}
+
+/* Avoid overlap between floating social buttons and back-to-top button */
+.back-to-top.is-visible ~ .social-float {
+    bottom: var(--space-24);
 }
 
 /* ==========================================================================
