@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Photo gallery of BASCI events, matches, and community moments. See our vibrant sports community in action.">
+    <title>Gallery - BASCI | Bengal Amateur Sports Club of Ireland</title>
+
+    <link rel="icon" type="image/png" href="../assets/images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Oswald:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+    <style>
+        /* Social embeds */
+        .social-feeds__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .social-feeds__tabs {
+            display: none;
+            gap: var(--space-3);
+            justify-content: center;
+            margin: var(--space-6) 0 var(--space-8);
+            flex-wrap: wrap;
+        }
+
+        .social-feeds__card {
+            background: var(--color-white);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+        }
+
+        .social-feeds__card-header {
+            padding: var(--space-6);
+            border-bottom: 1px solid var(--color-gray-200);
+        }
+
+        .social-feeds__card-title {
+            margin: 0;
+            font-size: var(--text-xl);
+            color: var(--color-gray-900);
+        }
+
+        .social-feeds__frame {
+            width: 100%;
+            height: 680px;
+            border: 0;
+        }
+
+        .social-feeds__actions {
+            padding: var(--space-6);
+            border-top: 1px solid var(--color-gray-200);
+            display: flex;
+            justify-content: flex-start;
+            gap: var(--space-3);
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 1023px) {
+            .social-feeds__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-feeds__tabs {
+                display: flex;
+            }
+
+            .social-feeds__card {
+                display: none;
+            }
+
+            .social-feeds__card.is-active {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="../index.html" class="nav__logo">
+                    <img src="../assets/images/logo.png" alt="BASCI Logo">
+                    <span class="nav__logo-text">BASCI</span>
+                </a>
+                <ul class="nav__menu" id="navMenu">
+                    <li class="nav__item"><a href="../index.html" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="about.html" class="nav__link">About Us</a></li>
+                    <li class="nav__item"><a href="team.html" class="nav__link">Our Team</a></li>
+                    <li class="nav__item"><a href="events.html" class="nav__link">Events</a></li>
+                    <li class="nav__item"><a href="gallery.html" class="nav__link is-active">Gallery</a></li>
+                    <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+                    <li class="nav__item nav__item--cta">
+                        <a href="../index.html#membership" class="btn btn--primary btn--sm">Join Now</a>
+                    </li>
+                </ul>
+                <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation">
+                    <span></span><span></span><span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header__background">
+            <video autoplay muted loop playsinline>
+                <source src="../assets/videos/12915089_1920_1080_60fps.mp4" type="video/mp4">
+            </video>
+            <div class="page-header__overlay"></div>
+        </div>
+        <div class="container">
+            <div class="page-header__content">
+                <nav class="page-header__breadcrumb" data-animate="fade-up">
+                    <a href="../index.html">Home</a>
+                    <span>/</span>
+                    <span>Gallery</span>
+                </nav>
+                <h1 class="page-header__title" data-animate="fade-up" data-animate-delay="100">Photo & Video Gallery</h1>
+                <p class="page-header__subtitle" data-animate="fade-up" data-animate-delay="200">
+                    Relive the best moments from our matches, events, and community gatherings
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Feeds Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header section-header--center">
+                <span class="section-header__badge" data-animate="fade-up">Social Updates</span>
+                <h2 class="section-header__title" data-animate="fade-up" data-animate-delay="100">
+                    Latest on <span class="text-primary">Facebook</span> & <span class="text-secondary">Instagram</span>
+                </h2>
+                <p class="section-header__subtitle" data-animate="fade-up" data-animate-delay="200">
+                    This gallery updates automatically whenever we post on Facebook or Instagram
+                </p>
+            </div>
+
+            <div class="social-feeds__tabs" role="tablist" aria-label="Social gallery tabs">
+                <button class="btn btn--primary btn--sm" type="button" data-social-tab="facebook" aria-controls="socialFeedFacebook" aria-selected="true">Facebook</button>
+                <button class="btn btn--outline btn--sm" type="button" data-social-tab="instagram" aria-controls="socialFeedInstagram" aria-selected="false">Instagram</button>
+            </div>
+
+            <div class="social-feeds__grid">
+                <div class="social-feeds__card is-active" id="socialFeedFacebook" data-animate="fade-up">
+                    <div class="social-feeds__card-header">
+                        <h3 class="social-feeds__card-title">Facebook</h3>
+                    </div>
+                    <iframe
+                        class="social-feeds__frame"
+                        title="BASCI on Facebook"
+                        src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D61572576583991&tabs=timeline%2Cevents&width=500&height=680&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
+                        width="500"
+                        height="680"
+                        style="border:none;overflow:hidden"
+                        scrolling="no"
+                        frameborder="0"
+                        allowfullscreen="true"
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                    </iframe>
+                    <div class="social-feeds__actions">
+                        <a class="btn btn--primary btn--sm" href="https://www.facebook.com/profile.php?id=61572576583991" target="_blank" rel="noopener noreferrer">Open Facebook Page</a>
+                        <a class="btn btn--outline btn--sm" href="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D61572576583991" target="_blank" rel="noopener noreferrer">Open Embed</a>
+                    </div>
+                </div>
+
+                <div class="social-feeds__card" id="socialFeedInstagram" data-animate="fade-up" data-animate-delay="100">
+                    <div class="social-feeds__card-header">
+                        <h3 class="social-feeds__card-title">Instagram</h3>
+                    </div>
+                    <iframe
+                        class="social-feeds__frame"
+                        title="BASCI on Instagram"
+                        src="https://www.instagram.com/basci012025/embed"
+                        width="400"
+                        height="680"
+                        frameborder="0"
+                        scrolling="no"
+                        allowtransparency="true">
+                    </iframe>
+                    <div class="social-feeds__actions">
+                        <a class="btn btn--secondary btn--sm" href="https://www.instagram.com/basci012025/" target="_blank" rel="noopener noreferrer">Open Instagram</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta__background">
+            <video autoplay muted loop playsinline>
+                <source src="../assets/videos/5423490-hd_1920_1080_30fps.mp4" type="video/mp4">
+            </video>
+            <div class="cta__overlay"></div>
+        </div>
+        <div class="container">
+            <div class="cta__content" data-animate="scale-up">
+                <h2 class="cta__title">Be Part of Our Next Photo</h2>
+                <p class="cta__text">
+                    Join BASCI and create your own memorable moments with our community!
+                </p>
+                <div class="cta__buttons">
+                    <a href="../index.html#membership" class="btn btn--primary btn--lg">
+                        Become a Member
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__column footer__column--about">
+                    <a href="../index.html" class="footer__logo">
+                        <img src="../assets/images/logo.png" alt="BASCI Logo">
+                        <span>BASCI</span>
+                    </a>
+                    <p class="footer__about-text">Bengal Amateur Sports Club of Ireland — Driven by Passion, United by Sports.</p>
+                    <div class="footer__social">
+                        <a href="https://www.facebook.com/groups/BASCI.Dublin/" class="footer__social-link" target="_blank" rel="noopener" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/></svg>
+                        </a>
+                        <a href="https://www.youtube.com/@bengalsportsireland" class="footer__social-link" target="_blank" rel="noopener" aria-label="YouTube">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </a>
+                        <a href="mailto:bengalsportsireland@gmail.com" class="footer__social-link" aria-label="Email">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer__column">
+                    <h4 class="footer__title">Quick Links</h4>
+                    <ul class="footer__links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <h4 class="footer__title">Our Sports</h4>
+                    <ul class="footer__links">
+                        <li><a href="../index.html#sports">Football</a></li>
+                        <li><a href="../index.html#sports">Badminton</a></li>
+                        <li><a href="events.html">Tournaments</a></li>
+                        <li><a href="../index.html#membership">Membership</a></li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <h4 class="footer__title">Contact Us</h4>
+                    <ul class="footer__contact">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Dublin, Ireland</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+353879912745">+353-087-9912745</a></li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:bengalsportsireland@gmail.com">bengalsportsireland@gmail.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="footer__copyright">&copy; <span id="currentYear"></span> BASCI. All rights reserved.</p>
+                <p class="footer__tagline">Driven by Passion, United by Sports</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+    </button>
+
+    <script src="../js/main.js"></script>
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Social feed tabs (mobile)
+        const tabButtons = Array.from(document.querySelectorAll('[data-social-tab]'));
+        const facebookCard = document.getElementById('socialFeedFacebook');
+        const instagramCard = document.getElementById('socialFeedInstagram');
+
+        function setActiveTab(tab) {
+            const isFacebook = tab === 'facebook';
+            facebookCard?.classList.toggle('is-active', isFacebook);
+            instagramCard?.classList.toggle('is-active', !isFacebook);
+
+            tabButtons.forEach(btn => {
+                const active = btn.dataset.socialTab === tab;
+                btn.setAttribute('aria-selected', active ? 'true' : 'false');
+                btn.classList.toggle('btn--primary', active);
+                btn.classList.toggle('btn--outline', !active);
+            });
+        }
+
+        tabButtons.forEach(btn => {
+            btn.addEventListener('click', () => setActiveTab(btn.dataset.socialTab));
+        });
+    </script>
+</body>
+</html>

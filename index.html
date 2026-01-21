@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BASCI - Bengal Amateur Sports Club of Ireland. Driven by Passion, United by Sports. Join our vibrant community of sports enthusiasts in Dublin, Ireland.">
+    <meta name="keywords" content="BASCI, Bengal Amateur Sports Club, Ireland, Dublin, Football, Badminton, Sports Club, Bengali Community">
+    <meta name="author" content="BASCI">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://basci.ie/">
+    <meta property="og:title" content="BASCI - Bengal Amateur Sports Club of Ireland">
+    <meta property="og:description" content="Driven by Passion, United by Sports. Join our vibrant community of sports enthusiasts in Dublin, Ireland.">
+    <meta property="og:image" content="assets/images/logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://basci.ie/">
+    <meta property="twitter:title" content="BASCI - Bengal Amateur Sports Club of Ireland">
+    <meta property="twitter:description" content="Driven by Passion, United by Sports. Join our vibrant community of sports enthusiasts in Dublin, Ireland.">
+
+    <title>BASCI - Bengal Amateur Sports Club of Ireland</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Oswald:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="page-loader__spinner"></div>
+        <img src="assets/images/logo.png" alt="BASCI Logo" class="page-loader__logo">
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="nav__logo">
+                    <img src="assets/images/logo.png" alt="BASCI Logo">
+                    <span class="nav__logo-text">BASCI</span>
+                </a>
+
+                <ul class="nav__menu" id="navMenu">
+                    <li class="nav__item">
+                        <a href="index.html" class="nav__link is-active">Home</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="pages/about.html" class="nav__link">About Us</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="pages/team.html" class="nav__link">Our Team</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="pages/events.html" class="nav__link">Events</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="pages/gallery.html" class="nav__link">Gallery</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="pages/contact.html" class="nav__link">Contact</a>
+                    </li>
+                    <li class="nav__item nav__item--cta">
+                        <a href="#membership" class="btn btn--primary btn--sm">Join Now</a>
+                    </li>
+                </ul>
+
+                <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero__video-container">
+            <video class="hero__video" autoplay muted loop playsinline id="heroVideo">
+                <source src="assets/videos/6077718-uhd_3840_2160_25fps.mp4" type="video/mp4">
+            </video>
+            <div class="hero__overlay"></div>
+        </div>
+
+        <div class="hero__content">
+            <div class="container">
+                <span class="hero__badge" data-animate="fade-up">Welcome to BASCI</span>
+                <h1 class="hero__title" data-animate="fade-up" data-animate-delay="100">
+                    Driven by <span class="text-gradient">Passion</span>,<br>
+                    United by <span class="text-gradient">Sports</span>
+                </h1>
+                <p class="hero__subtitle" data-animate="fade-up" data-animate-delay="200">
+                    Bengal Amateur Sports Club of Ireland — Building community through the love of sports since our founding.
+                    Join us in Dublin for football, badminton, and unforgettable sporting moments.
+                </p>
+                <div class="hero__buttons" data-animate="fade-up" data-animate-delay="300">
+                    <a href="#about" class="btn btn--primary btn--lg">
+                        <span>Discover More</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="#sports" class="btn btn--outline-light btn--lg">
+                        <span>Our Sports</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero__scroll" data-animate="fade-up" data-animate-delay="500">
+            <a href="#about" class="hero__scroll-btn">
+                <span>Scroll Down</span>
+                <div class="hero__scroll-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v14M5 12l7 7 7-7"/>
+                    </svg>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about section" id="about">
+        <div class="container">
+            <div class="about__grid">
+                <div class="about__content">
+                    <div class="section-header section-header--left">
+                        <span class="section-header__badge" data-animate="fade-right">Who We Are</span>
+                        <h2 class="section-header__title" data-animate="fade-right" data-animate-delay="100">
+                            More Than Just a <span class="text-primary">Sports Club</span>
+                        </h2>
+                    </div>
+                    <div class="about__text" data-animate="fade-right" data-animate-delay="200">
+                        <p>
+                            <strong>BASCI (Bengal Amateur Sports Club of Ireland)</strong> is not your ordinary sports club —
+                            we're a family of passionate individuals who believe in the unifying power of sports. Based in the
+                            heart of Dublin, Ireland, our club brings together people from all walks of life who share a common
+                            love for athletic pursuits.
+                        </p>
+                        <p>
+                            Whether you're a seasoned athlete or just starting your sporting journey, BASCI welcomes you with
+                            open arms. We organize regular football matches, badminton sessions, and various sporting events
+                            that bring our community together.
+                        </p>
+                    </div>
+                    <div class="about__stats" data-animate="fade-right" data-animate-delay="300">
+                        <div class="stat">
+                            <span class="stat__number" data-count="100">100</span><span class="stat__suffix">+</span>
+                            <span class="stat__label">Active Members</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat__number" data-count="5">5</span><span class="stat__suffix">+</span>
+                            <span class="stat__label">Sports Programs</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat__number" data-count="10">10</span><span class="stat__suffix">+</span>
+                            <span class="stat__label">Events Per Year</span>
+                        </div>
+                    </div>
+                    <a href="pages/about.html" class="btn btn--primary" data-animate="fade-right" data-animate-delay="400">
+                        Learn More About Us
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="about__image" data-animate="fade-left" data-animate-delay="200">
+                    <div class="about__image-wrapper">
+                        <img src="assets/images/logo.png" alt="BASCI Logo" class="about__img">
+                        <div class="about__image-decoration"></div>
+                    </div>
+                    <div class="about__floating-card" data-animate="scale-up" data-animate-delay="400">
+                        <div class="floating-card__icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        <div class="floating-card__content">
+                            <span class="floating-card__title">Dublin, Ireland</span>
+                            <span class="floating-card__subtitle">Community Sports Hub</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sports Section -->
+    <section class="sports section section--dark" id="sports">
+        <div class="container">
+            <div class="section-header section-header--center">
+                <span class="section-header__badge" data-animate="fade-up">What We Play</span>
+                <h2 class="section-header__title" data-animate="fade-up" data-animate-delay="100">
+                    Our <span class="text-secondary">Sports</span> Programs
+                </h2>
+                <p class="section-header__subtitle" data-animate="fade-up" data-animate-delay="200">
+                    From the adrenaline of football to the precision of badminton, we've got something for every sports enthusiast.
+                </p>
+            </div>
+
+            <div class="sports__grid">
+                <!-- Football Card -->
+                <div class="sport-card" data-animate="fade-up" data-animate-delay="100">
+                    <div class="sport-card__icon">
+                        <svg viewBox="0 0 512 512" fill="currentColor">
+                            <path d="M256 32C132.3 32 32 132.3 32 256s100.3 224 224 224 224-100.3 224-224S379.7 32 256 32zm148.7 192.6l-51.3 17.1-37.4-37.4 17.1-51.3 51.3 17.1 20.3 54.5zm-180.4-95.3l51.3-17.1 37.4 37.4-17.1 51.3-51.3-17.1-20.3-54.5zm-48.6 95.3l-51.3-17.1-20.3-54.5 51.3-17.1 37.4 37.4-17.1 51.3zm48.6 159.3l-51.3 17.1-37.4-37.4 17.1-51.3 51.3 17.1 20.3 54.5zm0-127.8l-51.3 17.1-37.4-37.4 17.1-51.3 51.3 17.1 20.3 54.5zm79.7 127.8l-51.3-17.1-20.3-54.5 51.3-17.1 37.4 37.4-17.1 51.3zm0-127.8l-51.3-17.1-20.3-54.5 51.3-17.1 37.4 37.4-17.1 51.3z"/>
+                        </svg>
+                    </div>
+                    <h3 class="sport-card__title">Football</h3>
+                    <p class="sport-card__description">
+                        Weekly football sessions that bring out the best in every player. From friendly matches to competitive tournaments,
+                        experience the beautiful game with BASCI.
+                    </p>
+                    <ul class="sport-card__features">
+                        <li>Weekly training sessions</li>
+                        <li>Competitive matches</li>
+                        <li>All skill levels welcome</li>
+                        <li>Professional coaching</li>
+                    </ul>
+                    <div class="sport-card__schedule">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        <span>Weekly Sessions</span>
+                    </div>
+                </div>
+
+                <!-- Badminton Card -->
+                <div class="sport-card" data-animate="fade-up" data-animate-delay="200">
+                    <div class="sport-card__icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12.5 3C7.81 3 4 5.69 4 9c0 1.44.72 2.75 1.89 3.79-.54 1.38-1.14 2.58-1.14 2.58-.16.35-.14.77.07 1.1.21.33.58.53.98.53h.01c.39 0 .76-.17 1.01-.45 0 0 1.26-1.42 2.54-2.14.91.28 1.9.43 2.94.43h.4c1.04 0 2.03-.15 2.94-.43 1.28.72 2.54 2.14 2.54 2.14.25.28.62.45 1.01.45h.01c.4 0 .77-.2.98-.53.21-.33.23-.75.07-1.1 0 0-.6-1.2-1.14-2.58C19.28 11.75 20 10.44 20 9c0-3.31-3.81-6-8.5-6zm0 10c-.53 0-1.04-.06-1.52-.16l-.6.42c-.52.36-1.03.8-1.5 1.28-.1-.26-.19-.52-.27-.78.42-.2.81-.44 1.18-.7.31.08.63.14.96.18.27.04.55.06.83.06h.84c.28 0 .56-.02.83-.06.33-.04.65-.1.96-.18.37.26.76.5 1.18.7-.08.26-.17.52-.27.78-.47-.48-.98-.92-1.5-1.28l-.6-.42c-.48.1-.99.16-1.52.16z"/>
+                            <circle cx="12.5" cy="8" r="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="sport-card__title">Badminton</h3>
+                    <p class="sport-card__description">
+                        Fast-paced badminton action at Baldoyle Badminton Centre. Join us for rallies, smashes, and an incredible
+                        workout that keeps you coming back for more.
+                    </p>
+                    <ul class="sport-card__features">
+                        <li>Indoor courts at Baldoyle</li>
+                        <li>Singles & doubles play</li>
+                        <li>Beginner friendly</li>
+                        <li>Tournament opportunities</li>
+                    </ul>
+                    <div class="sport-card__schedule">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                        <span>Weekly at Baldoyle</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Animated background elements -->
+        <div class="sports__bg-elements">
+            <div class="sports__bg-circle sports__bg-circle--1"></div>
+            <div class="sports__bg-circle sports__bg-circle--2"></div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events section" id="events">
+        <div class="container">
+            <div class="section-header section-header--center">
+                <span class="section-header__badge" data-animate="fade-up">Mark Your Calendar</span>
+                <h2 class="section-header__title" data-animate="fade-up" data-animate-delay="100">
+                    Upcoming <span class="text-primary">Events</span>
+                </h2>
+                <p class="section-header__subtitle" data-animate="fade-up" data-animate-delay="200">
+                    From thrilling tournaments to community celebrations, there's always something exciting happening at BASCI.
+                </p>
+            </div>
+
+            <div class="events__slider slider" data-slider='{"slidesToShow": 3, "autoplay": true, "autoplaySpeed": 4000, "responsive": [{"breakpoint": 1024, "settings": {"slidesToShow": 2}}, {"breakpoint": 640, "settings": {"slidesToShow": 1}}]}'>
+                <div class="slider__track">
+                    <!-- Event 1: Awards Night -->
+                    <div class="slider__slide">
+                        <div class="event-card" data-animate="fade-up">
+                            <div class="event-card__image">
+                                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=300&fit=crop" alt="Awards Night">
+                                <div class="event-card__date">
+                                    <span class="event-card__day">Dec</span>
+                                    <span class="event-card__month">2024</span>
+                                </div>
+                            </div>
+                            <div class="event-card__content">
+                                <span class="event-card__category">Annual Event</span>
+                                <h3 class="event-card__title">BASCI Awards Night</h3>
+                                <p class="event-card__description">
+                                    Join us for an evening of celebration as we honor our outstanding athletes and community members.
+                                </p>
+                                <div class="event-card__meta">
+                                    <span class="event-card__location">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                            <circle cx="12" cy="10" r="3"/>
+                                        </svg>
+                                        Dublin, Ireland
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event 2: Roy Sinha Memorial Derby Cup -->
+                    <div class="slider__slide">
+                        <div class="event-card" data-animate="fade-up" data-animate-delay="100">
+                            <div class="event-card__image">
+                                <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400&h=300&fit=crop" alt="Roy Sinha Memorial Derby Cup">
+                                <div class="event-card__date">
+                                    <span class="event-card__day">Annual</span>
+                                    <span class="event-card__month">Trophy</span>
+                                </div>
+                            </div>
+                            <div class="event-card__content">
+                                <span class="event-card__category">Football Tournament</span>
+                                <h3 class="event-card__title">Roy Sinha Memorial Derby Cup</h3>
+                                <p class="event-card__description">
+                                    Our premier football tournament honoring the legacy of Roy Sinha. Intense competition and camaraderie.
+                                </p>
+                                <div class="event-card__meta">
+                                    <span class="event-card__location">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                            <circle cx="12" cy="10" r="3"/>
+                                        </svg>
+                                        Dublin, Ireland
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event 3: BASCI-NCC Friendship Cup -->
+                    <div class="slider__slide">
+                        <div class="event-card" data-animate="fade-up" data-animate-delay="200">
+                            <div class="event-card__image">
+                                <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=400&h=300&fit=crop" alt="BASCI-NCC Friendship Cup">
+                                <div class="event-card__date">
+                                    <span class="event-card__day">Annual</span>
+                                    <span class="event-card__month">Match</span>
+                                </div>
+                            </div>
+                            <div class="event-card__content">
+                                <span class="event-card__category">Friendly Competition</span>
+                                <h3 class="event-card__title">BASCI-NCC Friendship Cup</h3>
+                                <p class="event-card__description">
+                                    A celebration of friendship and sportsmanship between BASCI and NCC communities.
+                                </p>
+                                <div class="event-card__meta">
+                                    <span class="event-card__location">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                            <circle cx="12" cy="10" r="3"/>
+                                        </svg>
+                                        Dublin, Ireland
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event 4: Badminton Tournament -->
+                    <div class="slider__slide">
+                        <div class="event-card" data-animate="fade-up" data-animate-delay="300">
+                            <div class="event-card__image">
+                                <img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=400&h=300&fit=crop" alt="Badminton Tournament">
+                                <div class="event-card__date">
+                                    <span class="event-card__day">Annual</span>
+                                    <span class="event-card__month">Event</span>
+                                </div>
+                            </div>
+                            <div class="event-card__content">
+                                <span class="event-card__category">Badminton</span>
+                                <h3 class="event-card__title">BASCI Badminton Tournament</h3>
+                                <p class="event-card__description">
+                                    Singles and doubles competition showcasing the best badminton talent in our community.
+                                </p>
+                                <div class="event-card__meta">
+                                    <span class="event-card__location">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                            <circle cx="12" cy="10" r="3"/>
+                                        </svg>
+                                        Baldoyle, Dublin
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event 5: Community Day -->
+                    <div class="slider__slide">
+                        <div class="event-card" data-animate="fade-up" data-animate-delay="400">
+                            <div class="event-card__image">
+                                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&h=300&fit=crop" alt="Community Day">
+                                <div class="event-card__date">
+                                    <span class="event-card__day">Summer</span>
+                                    <span class="event-card__month">2024</span>
+                                </div>
+                            </div>
+                            <div class="event-card__content">
+                                <span class="event-card__category">Community</span>
+                                <h3 class="event-card__title">BASCI Family Day</h3>
+                                <p class="event-card__description">
+                                    A fun-filled day for the whole family with games, food, and activities for all ages.
+                                </p>
+                                <div class="event-card__meta">
+                                    <span class="event-card__location">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                            <circle cx="12" cy="10" r="3"/>
+                                        </svg>
+                                        Dublin, Ireland
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="events__cta" data-animate="fade-up" data-animate-delay="300">
+                <a href="pages/events.html" class="btn btn--primary">
+                    View All Events
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Highlight Section -->
+    <section class="video-section">
+        <div class="video-section__background">
+            <video autoplay muted loop playsinline>
+                <source src="assets/videos/6079618-uhd_3840_2160_25fps.mp4" type="video/mp4">
+            </video>
+            <div class="video-section__overlay"></div>
+        </div>
+        <div class="container">
+            <div class="video-section__content" data-animate="scale-up">
+                <h2 class="video-section__title">Experience the Thrill</h2>
+                <p class="video-section__subtitle">Watch our players in action and feel the passion that drives BASCI</p>
+                <a href="#" class="video-section__play-btn" data-video="assets/videos/12915089_1920_1080_60fps.mp4">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team section" id="team">
+        <div class="container">
+            <div class="section-header section-header--center">
+                <span class="section-header__badge" data-animate="fade-up">Meet the Leaders</span>
+                <h2 class="section-header__title" data-animate="fade-up" data-animate-delay="100">
+                    Our <span class="text-primary">Executive</span> Committee
+                </h2>
+                <p class="section-header__subtitle" data-animate="fade-up" data-animate-delay="200">
+                    The dedicated individuals who work tirelessly to make BASCI a thriving sports community.
+                </p>
+            </div>
+
+            <div class="team__grid">
+                <!-- Chairman -->
+                <div class="team-card" data-animate="fade-up" data-animate-delay="100">
+                    <div class="team-card__image">
+                        <img src="assets/images/Malay-chairman.png" alt="Maloy Chatterjee">
+                        <div class="team-card__overlay">
+                            <div class="team-card__social">
+                                <a href="#" class="team-card__social-link" aria-label="LinkedIn">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                    </svg>
+                                </a>
+                                <a href="mailto:bengalsportsireland@gmail.com" class="team-card__social-link" aria-label="Email">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                        <polyline points="22,6 12,13 2,6"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card__content">
+                        <h3 class="team-card__name">Maloy Chatterjee</h3>
+                        <span class="team-card__role">Chairman</span>
+                    </div>
+                </div>
+
+                <!-- President -->
+                <div class="team-card" data-animate="fade-up" data-animate-delay="200">
+                    <div class="team-card__image">
+                        <img src="assets/images/Indrajit-president.png" alt="Indrajit Bose">
+                        <div class="team-card__overlay">
+                            <div class="team-card__social">
+                                <a href="#" class="team-card__social-link" aria-label="LinkedIn">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                    </svg>
+                                </a>
+                                <a href="mailto:bengalsportsireland@gmail.com" class="team-card__social-link" aria-label="Email">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                        <polyline points="22,6 12,13 2,6"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card__content">
+                        <h3 class="team-card__name">Indrajit Bose</h3>
+                        <span class="team-card__role">President</span>
+                    </div>
+                </div>
+
+                <!-- General Secretary -->
+                <div class="team-card" data-animate="fade-up" data-animate-delay="300">
+                    <div class="team-card__image">
+                        <img src="assets/images/Joy General Secretary.png" alt="Joydeep Roy">
+                        <div class="team-card__overlay">
+                            <div class="team-card__social">
+                                <a href="#" class="team-card__social-link" aria-label="LinkedIn">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                    </svg>
+                                </a>
+                                <a href="mailto:bengalsportsireland@gmail.com" class="team-card__social-link" aria-label="Email">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                        <polyline points="22,6 12,13 2,6"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card__content">
+                        <h3 class="team-card__name">Joydeep Roy</h3>
+                        <span class="team-card__role">General Secretary</span>
+                    </div>
+                </div>
+
+                <!-- Treasurer -->
+                <div class="team-card" data-animate="fade-up" data-animate-delay="400">
+                    <div class="team-card__image">
+                        <img src="assets/images/Niladri Treasurer.png" alt="Niladri Das">
+                        <div class="team-card__overlay">
+                            <div class="team-card__social">
+                                <a href="#" class="team-card__social-link" aria-label="LinkedIn">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                    </svg>
+                                </a>
+                                <a href="mailto:bengalsportsireland@gmail.com" class="team-card__social-link" aria-label="Email">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                        <polyline points="22,6 12,13 2,6"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card__content">
+                        <h3 class="team-card__name">Niladri Das</h3>
+                        <span class="team-card__role">Treasurer</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team__cta" data-animate="fade-up" data-animate-delay="500">
+                <a href="pages/team.html" class="btn btn--outline">
+                    View All Team Members
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Section -->
+    <section class="membership section section--gray" id="membership">
+        <div class="container">
+            <div class="section-header section-header--center">
+                <span class="section-header__badge" data-animate="fade-up">Join the Family</span>
+                <h2 class="section-header__title" data-animate="fade-up" data-animate-delay="100">
+                    Membership <span class="text-primary">Plans</span>
+                </h2>
+                <p class="section-header__subtitle" data-animate="fade-up" data-animate-delay="200">
+                    Become a part of BASCI and unlock access to sports, events, and a vibrant community.
+                    Choose the plan that suits you best.
+                </p>
+            </div>
+
+            <div class="membership__grid">
+                <!-- Adult Membership -->
+                <div class="pricing-card" data-animate="fade-up" data-animate-delay="100">
+                    <div class="pricing-card__header">
+                        <h3 class="pricing-card__title">Adult Member</h3>
+                        <p class="pricing-card__subtitle">Full access for adults</p>
+                    </div>
+                    <div class="pricing-card__price">
+                        <span class="pricing-card__currency">€</span>
+                        <span class="pricing-card__amount">60</span>
+                        <span class="pricing-card__period">/year</span>
+                    </div>
+                    <ul class="pricing-card__features">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                            </svg>
+                            Access to all football sessions
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                            </svg>
+                            Access to badminton sessions
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                            </svg>
+                            Priority event registration
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                            </svg>
+                            Voting rights at AGM
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                            </svg>
+                            BASCI merchandise discounts
+                        </li>
+                    </ul>
+                    <a href="https://www.bascisports.com/pricing-plans/checkout-1?planId=d9fb9027-8572-481a-b776-dfb44f57b684&checkoutFlowId=ec7a5031-2735-4154-a69f-60202ebfb0b1" class="btn btn--primary btn--block" target="_blank" rel="noopener">
+                        Join Now
+                    </a>
+                </div>
+
+                <!-- Student Membership (Featured) -->
+                <div class="pricing-card pricing-card--featured" data-animate="fade-up" data-animate-delay="200">
+                    <span class="pricing-card__badge">Best Value</span>
+                    <div class="pricing-card__header">
+                        <h3 class="pricing-card__title">Student Member</h3>
+                        <p class="pricing-card__subtitle">Special rate for students</p>
+                    </div>
+                    <div class="pricing-card__price">
+                        <span class="pricing-card__currency">€</span>
+                        <span class="pricing-card__amount">40</span>
+                        <span class="pricing-card__period">/year</span>
+                    </div>
+                    <ul class="pricing-card__features">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                            </svg>
+                            Access to all football sessions
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                            </svg>
+                            Access to badminton sessions
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                            </svg>
+                            Priority event registration
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                            </svg>
+                            Valid student ID required
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                            </svg>
+                            BASCI merchandise discounts
+                        </li>
+                    </ul>
+                    <a href="https://www.bascisports.com/pricing-plans/checkout-1?planId=5fdcb3ad-5449-43f6-8287-dcb9a12242a8&checkoutFlowId=813a0807-f6d7-43f9-b6c7-a7775ceec9ee" class="btn btn--secondary btn--block" target="_blank" rel="noopener">
+                        Join Now
+                    </a>
+                </div>
+
+                <!-- Associate Membership -->
+                <div class="pricing-card" data-animate="fade-up" data-animate-delay="300">
+                    <div class="pricing-card__header">
+                        <h3 class="pricing-card__title">Associate Member</h3>
+                        <p class="pricing-card__subtitle">Community supporter</p>
+                    </div>
+                    <div class="pricing-card__price">
+                        <span class="pricing-card__currency">€</span>
+                        <span class="pricing-card__amount">50</span>
+                        <span class="pricing-card__period">/year</span>
+                    </div>
+                    <ul class="pricing-card__features">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                            </svg>
+                            Access to social events
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                            </svg>
+                            Community networking
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                            </svg>
+                            Event notifications
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                            </svg>
+                            Support the club
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                            </svg>
+                            BASCI merchandise discounts
+                        </li>
+                    </ul>
+                    <a href="https://www.bascisports.com/pricing-plans/checkout-1?planId=c8f70f39-6ea5-4ce7-bc02-32e4730a7c5b&checkoutFlowId=2a083c18-3196-4915-8b5a-3f13ae06b6b8" class="btn btn--primary btn--block" target="_blank" rel="noopener">
+                        Join Now
+                    </a>
+                </div>
+            </div>
+
+            <p class="membership__note" data-animate="fade-up" data-animate-delay="400">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                </svg>
+                All memberships are valid for 12 months from the date of registration.
+            </p>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta__background">
+            <video autoplay muted loop playsinline>
+                <source src="assets/videos/5423490-hd_1920_1080_30fps.mp4" type="video/mp4">
+            </video>
+            <div class="cta__overlay"></div>
+        </div>
+        <div class="container">
+            <div class="cta__content" data-animate="scale-up">
+                <h2 class="cta__title">Ready to Join the BASCI Family?</h2>
+                <p class="cta__text">
+                    Take the first step towards an active, connected, and sports-filled life.
+                    Whether you're a seasoned athlete or just starting out, there's a place for you at BASCI.
+                </p>
+                <div class="cta__buttons">
+                    <a href="pages/contact.html" class="btn btn--primary btn--lg">
+                        Get Started Today
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="tel:+353879912745" class="btn btn--outline-light btn--lg">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        Call Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <!-- About Column -->
+                <div class="footer__column footer__column--about">
+                    <a href="index.html" class="footer__logo">
+                        <img src="assets/images/logo.png" alt="BASCI Logo">
+                        <span>BASCI</span>
+                    </a>
+                    <p class="footer__about-text">
+                        Bengal Amateur Sports Club of Ireland — Driven by Passion, United by Sports.
+                        Building community through the love of sports in Dublin, Ireland.
+                    </p>
+                    <div class="footer__social">
+                        <a href="https://www.facebook.com/profile.php?id=61572576583991" class="footer__social-link" target="_blank" rel="noopener" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.youtube.com/@bengalsportsireland" class="footer__social-link" target="_blank" rel="noopener" aria-label="YouTube">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </a>
+                        <a href="mailto:bengalsportsireland@gmail.com" class="footer__social-link" aria-label="Email">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links Column -->
+                <div class="footer__column">
+                    <h4 class="footer__title">Quick Links</h4>
+                    <ul class="footer__links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="pages/about.html">About Us</a></li>
+                        <li><a href="pages/team.html">Our Team</a></li>
+                        <li><a href="pages/events.html">Events</a></li>
+                        <li><a href="pages/gallery.html">Gallery</a></li>
+                        <li><a href="pages/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Sports Column -->
+                <div class="footer__column">
+                    <h4 class="footer__title">Our Sports</h4>
+                    <ul class="footer__links">
+                        <li><a href="#sports">Football</a></li>
+                        <li><a href="#sports">Badminton</a></li>
+                        <li><a href="pages/events.html">Tournaments</a></li>
+                        <li><a href="#membership">Membership</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Column -->
+                <div class="footer__column">
+                    <h4 class="footer__title">Contact Us</h4>
+                    <ul class="footer__contact">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            <span>Dublin, Ireland</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            <a href="tel:+353879912745">+353-087-9912745</a>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                            <a href="mailto:bengalsportsireland@gmail.com">bengalsportsireland@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p class="footer__copyright">
+                    &copy; <span id="currentYear"></span> BASCI - Bengal Amateur Sports Club of Ireland. All rights reserved.
+                </p>
+                <p class="footer__tagline">Driven by Passion, United by Sports</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal__overlay"></div>
+        <div class="video-modal__content">
+            <button class="video-modal__close" aria-label="Close video">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+            <video class="video-modal__video" controls>
+                <source src="" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/slider.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
