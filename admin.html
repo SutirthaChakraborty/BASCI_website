@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Staff Dashboard - BASCI</title>
+
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Oswald:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+
+    <!-- Login Gate -->
+    <div class="admin-login" id="adminLoginScreen">
+        <div class="admin-login__card">
+            <img src="assets/images/logo.png" alt="BASCI Logo" class="admin-login__logo">
+            <h1 class="admin-login__title">BASCI Staff Dashboard</h1>
+            <p class="admin-login__subtitle">Poster generator &amp; formation builder for club admins and coaches.</p>
+            <form id="adminLoginForm" class="admin-login__form">
+                <input type="password" id="adminPasswordInput" class="admin-login__input" placeholder="Enter staff password" autocomplete="off" required>
+                <button type="submit" class="btn btn--primary btn--block">Enter Dashboard</button>
+                <p class="admin-login__error" id="adminLoginError"></p>
+            </form>
+            <a href="index.html" class="admin-login__back">&larr; Back to main site</a>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="admin-shell" id="adminDashboard">
+        <header class="admin-header">
+            <div class="admin-header__brand">
+                <img src="assets/images/logo.png" alt="BASCI Logo">
+                <span>BASCI Staff Dashboard</span>
+            </div>
+            <nav class="admin-tabs" role="tablist">
+                <button type="button" class="admin-tabs__btn is-active" data-tab="poster" role="tab">🖼️ Poster Generator</button>
+                <button type="button" class="admin-tabs__btn" data-tab="formation" role="tab">⚽ Formation Builder</button>
+                <button type="button" class="admin-tabs__btn" data-tab="settings" role="tab">⚙️ Settings</button>
+            </nav>
+            <div class="admin-header__actions">
+                <a href="index.html" class="admin-header__link">View site</a>
+                <button type="button" class="admin-header__logout" id="adminLogoutBtn">Log out</button>
+            </div>
+        </header>
+
+        <main class="admin-main">
+
+            <!-- POSTER GENERATOR TAB -->
+            <section class="admin-tab-panel is-active" data-tab-panel="poster">
+                <div class="admin-panel-grid">
+                    <div class="admin-card">
+                        <h2 class="admin-card__title">1. Choose a template</h2>
+                        <div class="poster-template-grid" id="posterTemplateGrid"></div>
+                    </div>
+
+                    <div class="admin-card">
+                        <h2 class="admin-card__title">2. Describe what's happening</h2>
+                        <label class="admin-field">
+                            <span>Details for this poster</span>
+                            <textarea id="posterDetailsInput" rows="3" placeholder="e.g. BASCI vs NCC Friendship Cup, Saturday 5pm at Baldoyle"></textarea>
+                        </label>
+
+                        <label class="admin-field">
+                            <span>Reference images (optional, up to 6)</span>
+                            <input type="file" id="posterReferenceInput" accept="image/*" multiple>
+                        </label>
+                        <div class="poster-reference-gallery" id="posterReferenceGallery"></div>
+
+                        <button type="button" id="posterEnhanceBtn" class="btn btn--secondary">✨ Enhance Description</button>
+
+                        <div class="admin-field-wrap" id="posterEnhancedWrap">
+                            <label class="admin-field">
+                                <span>Enhanced prompt (editable)</span>
+                                <textarea id="posterEnhancedText" rows="4"></textarea>
+                            </label>
+                            <button type="button" id="posterGenerateBtn" class="btn btn--primary">🎨 Generate Poster</button>
+                        </div>
+
+                        <p class="admin-status" id="posterStatus"></p>
+                    </div>
+
+                    <div class="admin-card admin-card--wide poster-canvas-wrap" id="posterCanvasWrap">
+                        <h2 class="admin-card__title">3. Finish &amp; download</h2>
+                        <div class="poster-canvas-layout">
+                            <canvas id="posterCanvas" class="poster-canvas"></canvas>
+                            <div class="poster-controls">
+                                <label class="admin-field">
+                                    <span>Headline (optional)</span>
+                                    <input type="text" id="posterCaptionInput" placeholder="e.g. Match Day!">
+                                </label>
+                                <label class="admin-field">
+                                    <span>Sub-line (optional)</span>
+                                    <input type="text" id="posterSubcaptionInput" placeholder="e.g. Sat 14th - 5PM - Baldoyle">
+                                </label>
+                                <label class="admin-field">
+                                    <span>Logo badge position</span>
+                                    <select id="posterLogoPosition">
+                                        <option value="bottom-right">Bottom Right</option>
+                                        <option value="bottom-left">Bottom Left</option>
+                                        <option value="top-right">Top Right</option>
+                                        <option value="top-left">Top Left</option>
+                                        <option value="top-center">Top Center</option>
+                                        <option value="none">Hide logo badge</option>
+                                    </select>
+                                </label>
+                                <button type="button" id="posterDownloadBtn" class="btn btn--primary btn--block">⬇ Download PNG</button>
+                                <button type="button" id="posterStartOverBtn" class="btn btn--outline btn--block">Start Over</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FORMATION BUILDER TAB -->
+            <section class="admin-tab-panel" data-tab-panel="formation">
+                <div class="formation-layout">
+                    <aside class="formation-sidebar">
+
+                        <details class="admin-card formation-accordion" open>
+                            <summary>Team &amp; Format</summary>
+                            <div class="formation-accordion__body">
+                                <label class="admin-field">
+                                    <span>Format</span>
+                                    <select id="formationFormatSelect"></select>
+                                </label>
+                                <label class="admin-field"><span>Formation</span></label>
+                                <div class="formation-preset-grid" id="formationPresetGrid"></div>
+                                <label class="admin-field">
+                                    <span>Tactical style</span>
+                                    <select id="formationStyleSelect"></select>
+                                </label>
+                                <label class="admin-field">
+                                    <span>Our team name</span>
+                                    <input type="text" id="formationTitleInput" placeholder="e.g. BASCI Senior XI">
+                                </label>
+                                <label class="admin-field">
+                                    <span>Opponent</span>
+                                    <input type="text" id="formationOpponentNameInput" placeholder="e.g. NCC">
+                                </label>
+                                <div class="formation-two-col">
+                                    <label class="admin-field">
+                                        <span>Date / Time</span>
+                                        <input type="text" id="formationMatchDateInput" placeholder="Sat, 5:00 PM">
+                                    </label>
+                                    <label class="admin-field">
+                                        <span>Venue</span>
+                                        <input type="text" id="formationVenueInput" placeholder="Baldoyle">
+                                    </label>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="admin-card formation-accordion" open>
+                            <summary>Our Roster</summary>
+                            <div class="formation-accordion__body">
+                                <div class="formation-roster-add">
+                                    <input type="text" id="formationRosterInput" placeholder="Player name">
+                                    <input type="text" id="formationJerseyInput" placeholder="#" class="formation-roster-add__number">
+                                    <button type="button" id="formationRosterAddBtn" class="btn btn--secondary btn--sm">Add</button>
+                                </div>
+                                <p class="formation-hint">Drag a bench player onto the pitch. Drag anyone on the pitch to reposition freely. Tap a player on the pitch to edit their duty, number or captaincy.</p>
+                                <div class="formation-bench" id="formationBench"></div>
+                                <div class="formation-quick-actions">
+                                    <button type="button" id="formationAutoNumberBtn" class="btn btn--outline btn--sm">🔢 Auto-Number</button>
+                                    <button type="button" id="formationFlipBtn" class="btn btn--outline btn--sm">🔄 Flip Direction</button>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="admin-card formation-accordion">
+                            <summary>Opponent Team <span class="formation-accordion__badge" id="formationOpponentBadge">Off</span></summary>
+                            <div class="formation-accordion__body">
+                                <label class="admin-field-checkbox">
+                                    <input type="checkbox" id="formationOpponentToggle">
+                                    <span>Show opponent lineup on the pitch</span>
+                                </label>
+                                <div class="formation-opponent-controls" id="formationOpponentControls">
+                                    <label class="admin-field">
+                                        <span>Opponent formation</span>
+                                        <select id="formationOpponentPresetSelect"></select>
+                                    </label>
+                                    <div class="formation-roster-add">
+                                        <input type="text" id="formationOpponentRosterInput" placeholder="Opponent player">
+                                        <button type="button" id="formationOpponentRosterAddBtn" class="btn btn--secondary btn--sm">Add</button>
+                                    </div>
+                                    <div class="formation-bench formation-bench--opponent" id="formationOpponentBench"></div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="admin-card formation-accordion">
+                            <summary>Tactics &amp; Notes</summary>
+                            <div class="formation-accordion__body">
+                                <label class="admin-field">
+                                    <span>⚔️ When To Attack <button type="button" class="admin-suggest-btn" data-suggest="attack">Use suggested</button></span>
+                                    <textarea id="formationAttackNotes" rows="3" placeholder="e.g. Break quickly down the wings when we win the ball in midfield"></textarea>
+                                </label>
+                                <label class="admin-field">
+                                    <span>🛡️ How To Defend <button type="button" class="admin-suggest-btn" data-suggest="defend">Use suggested</button></span>
+                                    <textarea id="formationDefendNotes" rows="3" placeholder="e.g. Drop into a low block once they enter our half"></textarea>
+                                </label>
+                                <label class="admin-field">
+                                    <span>⚙️ Midfield Strategy <button type="button" class="admin-suggest-btn" data-suggest="midfield">Use suggested</button></span>
+                                    <textarea id="formationMidfieldNotes" rows="3" placeholder="e.g. Keep a spare man in front of the back four"></textarea>
+                                </label>
+                            </div>
+                        </details>
+
+                        <details class="admin-card formation-accordion">
+                            <summary>Saved Lineups</summary>
+                            <div class="formation-accordion__body">
+                                <label class="admin-field">
+                                    <span>Load a saved lineup</span>
+                                    <select id="formationSavedSelect"><option value="">Select...</option></select>
+                                </label>
+                                <div class="formation-quick-actions">
+                                    <button type="button" id="formationLoadBtn" class="btn btn--outline btn--sm">Load</button>
+                                    <button type="button" id="formationSaveAsBtn" class="btn btn--secondary btn--sm">💾 Save As New</button>
+                                    <button type="button" id="formationDeleteSavedBtn" class="btn btn--outline btn--sm">Delete</button>
+                                </div>
+                            </div>
+                        </details>
+                    </aside>
+
+                    <div class="formation-main">
+                        <div class="formation-toolbar">
+                            <button type="button" id="formationArrowModeBtn" class="btn btn--outline btn--sm">➜ Draw Tactic Arrow</button>
+                            <button type="button" id="formationClearArrowsBtn" class="btn btn--outline btn--sm">Clear Arrows</button>
+                            <button type="button" id="formationExportBtn" class="btn btn--primary btn--sm">⬇ Download Image</button>
+                            <button type="button" id="formationShareBtn" class="btn btn--secondary btn--sm">📲 Share Image to WhatsApp</button>
+                            <button type="button" id="formationShareDutiesBtn" class="btn btn--secondary btn--sm">📋 Share All Duties (Text)</button>
+                            <button type="button" id="formationResetBtn" class="btn btn--outline btn--sm">Reset Lineup</button>
+                        </div>
+                        <p class="admin-status" id="formationStatus"></p>
+
+                        <div class="formation-export-frame" id="formationExportFrame">
+                            <div class="formation-export-frame__header">
+                                <img src="assets/images/logo.png" alt="BASCI Logo" crossorigin="anonymous">
+                                <div>
+                                    <span class="formation-export-frame__club">BASCI</span>
+                                    <span class="formation-export-frame__title" id="formationExportTitle">Team Lineup</span>
+                                    <span class="formation-export-frame__meta" id="formationExportMeta"></span>
+                                </div>
+                            </div>
+                            <div class="formation-pitch" id="formationPitch">
+                                <svg class="formation-pitch__markings" viewBox="0 0 68 105" preserveAspectRatio="none" aria-hidden="true">
+                                    <rect x="0.5" y="0.5" width="67" height="104" class="pitch-line" fill="none"/>
+                                    <line x1="0.5" y1="52.5" x2="67.5" y2="52.5" class="pitch-line"/>
+                                    <circle cx="34" cy="52.5" r="9.15" class="pitch-line" fill="none"/>
+                                    <circle cx="34" cy="52.5" r="0.4" class="pitch-dot"/>
+                                    <rect x="13.84" y="88.5" width="40.32" height="16.5" class="pitch-line" fill="none"/>
+                                    <rect x="24.84" y="99.5" width="18.32" height="5.5" class="pitch-line" fill="none"/>
+                                    <circle cx="34" cy="94" r="0.4" class="pitch-dot"/>
+                                    <path d="M26.69,88.5 A9.15,9.15 0 0,1 41.31,88.5" class="pitch-line" fill="none"/>
+                                    <rect x="13.84" y="0" width="40.32" height="16.5" class="pitch-line" fill="none"/>
+                                    <rect x="24.84" y="0" width="18.32" height="5.5" class="pitch-line" fill="none"/>
+                                    <circle cx="34" cy="11" r="0.4" class="pitch-dot"/>
+                                    <path d="M26.69,16.5 A9.15,9.15 0 0,0 41.31,16.5" class="pitch-line" fill="none"/>
+                                </svg>
+                                <svg class="formation-pitch__arrows" id="formationArrows" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
+                                <div class="formation-pitch__tokens" id="formationTokens"></div>
+                                <div class="formation-pitch__tokens formation-pitch__tokens--opponent" id="formationOpponentTokens"></div>
+                            </div>
+                            <div class="formation-export-frame__tactics" id="formationExportTactics"></div>
+                            <div class="formation-export-frame__footer">Driven by Passion, United by Sports</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Player edit panel -->
+                <div class="formation-player-modal" id="formationPlayerModal">
+                    <div class="formation-player-modal__card">
+                        <h3>Edit Player</h3>
+                        <label class="admin-field"><span>Name</span><input type="text" id="playerModalName"></label>
+                        <label class="admin-field"><span>Number</span><input type="text" id="playerModalNumber"></label>
+                        <label class="admin-field"><span>Duty / Instruction</span><textarea id="playerModalDuty" rows="3"></textarea></label>
+                        <label class="admin-field-checkbox"><input type="checkbox" id="playerModalCaptain"><span>Team Captain</span></label>
+                        <label class="admin-field">
+                            <span>WhatsApp number (optional, with country code)</span>
+                            <input type="tel" id="playerModalPhone" placeholder="e.g. 353871234567">
+                        </label>
+                        <div class="formation-quick-actions">
+                            <button type="button" id="playerModalSaveBtn" class="btn btn--primary btn--sm">Save</button>
+                            <button type="button" id="playerModalShareBtn" class="btn btn--secondary btn--sm">📲 Send Duty via WhatsApp</button>
+                            <button type="button" id="playerModalRemoveBtn" class="btn btn--outline btn--sm">Remove from pitch</button>
+                            <button type="button" id="playerModalCancelBtn" class="btn btn--outline btn--sm">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile sticky action bar -->
+                <div class="formation-mobile-actionbar">
+                    <button type="button" id="formationMobileExportBtn" class="btn btn--primary">⬇ Download</button>
+                    <button type="button" id="formationMobileShareBtn" class="btn btn--secondary">📲 Share</button>
+                </div>
+            </section>
+
+            <!-- SETTINGS TAB -->
+            <section class="admin-tab-panel" data-tab-panel="settings">
+                <div class="admin-card admin-card--narrow">
+                    <h2 class="admin-card__title">Gemini API Settings</h2>
+                    <p class="admin-warning">
+                        Your API key is stored only in this browser (localStorage) - it is never saved to the
+                        website's source code or any server. Because this is a static site with no backend, any
+                        key used here is visible in your browser's network/devtools while you use this page.
+                        Keep this dashboard's URL and password private, and rotate your key periodically from
+                        <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener">Google AI Studio</a>.
+                    </p>
+
+                    <label class="admin-field">
+                        <span>Gemini API Key</span>
+                        <div class="admin-input-with-btn">
+                            <input type="password" id="settingsApiKeyInput" placeholder="Paste your Gemini API key">
+                            <button type="button" id="settingsShowKeyBtn" class="btn btn--outline btn--sm">Show</button>
+                        </div>
+                    </label>
+
+                    <label class="admin-field">
+                        <span>Text model (prompt enhancement)</span>
+                        <input type="text" id="settingsTextModelInput" placeholder="gemini-2.5-flash">
+                    </label>
+
+                    <label class="admin-field">
+                        <span>Image model (poster generation)</span>
+                        <input type="text" id="settingsImageModelInput" placeholder="gemini-2.5-flash-image">
+                    </label>
+
+                    <button type="button" id="settingsSaveBtn" class="btn btn--primary">Save Settings</button>
+                    <p class="admin-status" id="settingsStatus">Saved to this browser only.</p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="js/admin/formations-data.js"></script>
+    <script src="js/admin/poster-templates.js"></script>
+    <script src="js/admin/gemini-client.js"></script>
+    <script src="js/admin/auth.js"></script>
+    <script src="js/admin/poster-generator.js"></script>
+    <script src="js/admin/formation-builder.js"></script>
+    <script src="js/admin/admin-app.js"></script>
+</body>
+</html>

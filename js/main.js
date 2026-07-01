@@ -131,7 +131,8 @@ class Navigation {
         this.isOpen = true;
         this.toggle.classList.add('nav__toggle--active');
         this.menu.classList.add('nav__menu--open');
-        document.body.style.overflow = 'hidden';
+        document.body.classList.add('nav-open');
+        document.documentElement.classList.add('nav-open');
         this.toggle.setAttribute('aria-expanded', 'true');
     }
 
@@ -139,7 +140,8 @@ class Navigation {
         this.isOpen = false;
         this.toggle.classList.remove('nav__toggle--active');
         this.menu.classList.remove('nav__menu--open');
-        document.body.style.overflow = '';
+        document.body.classList.remove('nav-open');
+        document.documentElement.classList.remove('nav-open');
         this.toggle.setAttribute('aria-expanded', 'false');
     }
 
@@ -345,6 +347,49 @@ class HeroVideo {
 }
 
 // ==========================================================================
+// REDUCED MOTION HANDLING (Background/Hero Videos)
+// ==========================================================================
+
+class ReducedMotionVideos {
+    constructor() {
+        // All background/hero videos, excluding the on-demand modal player
+        this.videos = $$('video[autoplay]').filter(
+            video => !video.classList.contains('video-modal__video')
+        );
+        this.motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+        this.init();
+    }
+
+    init() {
+        if (!this.videos.length) return;
+
+        this.applyState(this.motionQuery.matches);
+
+        // React to live changes (e.g. user toggles the OS setting)
+        const handleChange = (event) => this.applyState(event.matches);
+        if (this.motionQuery.addEventListener) {
+            this.motionQuery.addEventListener('change', handleChange);
+        } else if (this.motionQuery.addListener) {
+            // Safari/older browsers fallback
+            this.motionQuery.addListener(handleChange);
+        }
+    }
+
+    applyState(prefersReducedMotion) {
+        this.videos.forEach(video => {
+            if (prefersReducedMotion) {
+                video.pause();
+                video.currentTime = 0;
+                video.classList.add('is-static');
+            } else {
+                video.classList.remove('is-static');
+                video.play().catch(() => {});
+            }
+        });
+    }
+}
+
+// ==========================================================================
 // PARALLAX EFFECT (Simple)
 // ==========================================================================
 
@@ -369,6 +414,50 @@ class Parallax {
             const offset = scrollY * speed;
             element.style.transform = `translateY(${offset}px)`;
         });
+    }
+}
+
+// ==========================================================================
+// SCROLL PROGRESS BAR
+// ==========================================================================
+
+class ScrollProgress {
+    constructor() {
+        this.bar = $('.scroll-progress');
+
+        if (!this.bar) {
+            this.bar = document.createElement('div');
+            this.bar.className = 'scroll-progress';
+            this.bar.setAttribute('aria-hidden', 'true');
+            document.body.appendChild(this.bar);
+        }
+
+        this.ticking = false;
+        this.init();
+    }
+
+    init() {
+        this.update();
+
+        window.addEventListener('scroll', () => {
+            if (!this.ticking) {
+                requestAnimationFrame(() => {
+                    this.update();
+                    this.ticking = false;
+                });
+                this.ticking = true;
+            }
+        });
+
+        window.addEventListener('resize', debounce(() => this.update()));
+    }
+
+    update() {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+
+        this.bar.style.width = `${Math.min(100, Math.max(0, progress))}%`;
     }
 }
 
@@ -854,11 +943,13 @@ document.addEventListener('DOMContentLoaded', () => {
     new Navigation();
     new SmoothScroll();
     new ScrollAnimations();
+    new ScrollProgress();
 
     // Enhanced features
     new CounterAnimation();
     new VideoPlayer();
     new HeroVideo();
+    new ReducedMotionVideos();
     new BackToTop();
     new FormValidation();
     new PageLoader();

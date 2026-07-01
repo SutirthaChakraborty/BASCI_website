@@ -99,6 +99,9 @@
                     <li class="nav__item nav__item--cta">
                         <a href="../index.html#membership" class="btn btn--primary btn--sm">Join Now</a>
                     </li>
+                    <li class="nav__item nav__item--admin">
+                        <a href="../admin.html" class="nav__admin-link" title="Staff Login" aria-label="Staff Login">🔒</a>
+                    </li>
                 </ul>
                 <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation">
                     <span></span><span></span><span></span>
@@ -110,11 +113,15 @@
     <!-- Page Header -->
     <section class="page-header">
         <div class="page-header__background">
-            <video autoplay muted loop playsinline>
+            <video autoplay muted loop playsinline poster="../assets/images/video-posters/12915089-poster.jpg" preload="metadata">
                 <source src="../assets/videos/12915089_1920_1080_60fps.mp4" type="video/mp4">
             </video>
             <div class="page-header__overlay"></div>
         </div>
+
+        <div class="hero__glow hero__glow--1" aria-hidden="true"></div>
+        <div class="hero__glow hero__glow--2" aria-hidden="true"></div>
+
         <div class="container">
             <div class="page-header__content">
                 <nav class="page-header__breadcrumb" data-animate="fade-up">
@@ -196,7 +203,7 @@
     <!-- CTA Section -->
     <section class="cta">
         <div class="cta__background">
-            <video autoplay muted loop playsinline>
+            <video autoplay muted loop playsinline poster="../assets/images/video-posters/5423490-poster.jpg" preload="metadata">
                 <source src="../assets/videos/5423490-hd_1920_1080_30fps.mp4" type="video/mp4">
             </video>
             <div class="cta__overlay"></div>
@@ -273,6 +280,7 @@
             <div class="footer__bottom">
                 <p class="footer__copyright">&copy; <span id="currentYear"></span> BASCI. All rights reserved.</p>
                 <p class="footer__tagline">Driven by Passion, United by Sports</p>
+                <a href="../admin.html" class="footer__staff-link">Staff Login</a>
             </div>
         </div>
     </footer>

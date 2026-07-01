@@ -13,21 +13,50 @@
     right: 0;
     z-index: var(--z-fixed);
     background: transparent;
+    padding-top: env(safe-area-inset-top);
     transition: all var(--transition-normal);
 }
 
+/* Glassmorphic "condensed" state once the page has scrolled past the hero.
+   Dark frosted bar with a faint gold bottom edge-glow, plus a slightly
+   shrunk logo/nav rhythm for a premium "condenses as you scroll" feel. */
 .header--scrolled {
-    background: rgba(255, 255, 255, 0.98);
+    background: rgba(10, 20, 14, 0.72);
     box-shadow: var(--shadow-md);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(var(--blur-glass));
+    -webkit-backdrop-filter: blur(var(--blur-glass));
+    border-bottom: 1px solid var(--glass-border);
+    position: relative;
+}
+
+.header--scrolled::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(var(--color-secondary-rgb), 0.6), transparent);
+    box-shadow: 0 0 12px 1px rgba(var(--color-secondary-rgb), 0.45);
+    pointer-events: none;
+}
+
+.header--scrolled .nav {
+    padding-top: var(--space-2);
+    padding-bottom: var(--space-2);
+}
+
+.header--scrolled .nav__logo img,
+.header--scrolled .nav__logo-img {
+    height: 40px;
 }
 
 .header--scrolled .nav__link {
-    color: var(--color-gray-800);
+    color: var(--color-white);
 }
 
 .header--scrolled .nav__logo-text {
-    color: var(--color-primary);
+    color: var(--color-secondary-light);
 }
 
 .nav {
@@ -37,6 +66,7 @@
     padding: var(--space-4) var(--section-padding-x);
     max-width: var(--container-max);
     margin: 0 auto;
+    transition: padding var(--transition-normal);
 }
 
 .nav__logo {
@@ -51,7 +81,7 @@
 .nav__logo-img {
     height: 50px;
     width: auto;
-    transition: transform var(--transition-fast);
+    transition: transform var(--transition-fast), height var(--transition-normal);
 }
 
 .nav__logo:hover img,
@@ -129,7 +159,11 @@
 .nav__toggle {
     display: none;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 6px;
+    width: var(--tap-target-min);
+    height: var(--tap-target-min);
     padding: var(--space-2);
     background: transparent;
     border: none;
@@ -155,11 +189,11 @@
 }
 
 .header--scrolled .nav__toggle-bar {
-    background: var(--color-gray-800);
+    background: var(--color-white);
 }
 
 .header--scrolled .nav__toggle span {
-    background: var(--color-gray-800);
+    background: var(--color-white);
 }
 
 .nav__toggle--active .nav__toggle-bar:nth-child(1) {
@@ -190,6 +224,25 @@
     margin-left: var(--space-4);
 }
 
+.nav__admin-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    margin-left: var(--space-3);
+    border-radius: var(--radius-full);
+    font-size: 0.9rem;
+    opacity: 0.45;
+    text-decoration: none;
+    transition: opacity var(--transition-fast), background var(--transition-fast);
+}
+.nav__admin-link:hover,
+.nav__admin-link:focus-visible {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.06);
+}
+
 /* Mobile Navigation */
 @media (max-width: 1023px) {
     .nav__toggle {
@@ -199,23 +252,34 @@
     .nav__menu {
         position: fixed;
         top: 0;
-        right: -100%;
+        right: 0;
         width: 100%;
         max-width: 400px;
         height: 100vh;
+        height: 100dvh;
         background: var(--color-white);
         flex-direction: column;
         justify-content: center;
         padding: var(--space-12);
+        padding-top: max(var(--space-12), env(safe-area-inset-top));
+        padding-bottom: max(var(--space-12), env(safe-area-inset-bottom));
         box-shadow: var(--shadow-2xl);
-        transition: right var(--transition-slow) var(--ease-out-expo);
+        /* transform (not `right`) keeps the closed menu from expanding the
+           document's scrollable area - `right: -100%` on a fixed element
+           still contributes to layout overflow in Chromium/WebKit and was
+           causing sitewide horizontal scroll on mobile. */
+        transform: translateX(100%);
+        transition: transform var(--transition-slow) var(--ease-out-expo);
+        overflow-y: auto;
     }
 
     .nav__menu--open {
-        right: 0;
+        transform: translateX(0);
     }
 
     .nav__link {
+        display: block;
+        min-height: var(--tap-target-min);
         color: var(--color-gray-800);
         font-size: var(--text-xl);
         padding: var(--space-4) 0;
@@ -228,6 +292,25 @@
 
     .nav__cta .btn {
         width: 100%;
+    }
+
+    .nav__item--admin {
+        margin-top: var(--space-4);
+        text-align: center;
+    }
+
+    .nav__admin-link {
+        display: inline-flex;
+        margin-left: 0;
+        width: auto;
+        height: auto;
+        padding: var(--space-2) var(--space-4);
+        font-size: var(--text-sm);
+        opacity: 0.5;
+    }
+    .nav__admin-link::after {
+        content: 'Staff Login';
+        margin-left: var(--space-2);
     }
 }
 
@@ -273,6 +356,83 @@
         rgba(0, 0, 0, 0.8) 100%
     );
     z-index: 1;
+}
+
+/* Fine-grain film noise for cinematic depth. Barely perceptible — subtlety
+   is the point. Sits above the overlay, below the text content. */
+.hero::before,
+.page-header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    opacity: 0.035;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Drifting glow orbs — soft blurred color blooms behind the hero content.
+   Purely decorative, positioned via CSS only, sitting above the overlay
+   but behind .hero__content/.page-header-content so headline text stays
+   fully legible. */
+.hero__glow {
+    position: absolute;
+    z-index: 1;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(80px);
+    will-change: transform;
+}
+
+.hero__glow--1 {
+    top: 8%;
+    left: -8%;
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle, rgba(var(--color-secondary-rgb), 0.35) 0%, rgba(var(--color-secondary-rgb), 0) 70%);
+    animation: glow-drift-1 22s ease-in-out infinite alternate;
+}
+
+.hero__glow--2 {
+    bottom: 5%;
+    right: -6%;
+    width: 480px;
+    height: 480px;
+    background: radial-gradient(circle, rgba(var(--color-primary-rgb), 0.4) 0%, rgba(var(--color-primary-rgb), 0) 70%);
+    animation: glow-drift-2 26s ease-in-out infinite alternate;
+}
+
+.hero__glow--3 {
+    top: 45%;
+    left: 50%;
+    width: 360px;
+    height: 360px;
+    background: radial-gradient(circle, rgba(var(--color-secondary-rgb), 0.22) 0%, rgba(var(--color-secondary-rgb), 0) 70%);
+    animation: glow-drift-3 20s ease-in-out infinite alternate;
+}
+
+@keyframes glow-drift-1 {
+    from { transform: translate(0, 0) scale(1); }
+    to { transform: translate(40px, 30px) scale(1.12); }
+}
+
+@keyframes glow-drift-2 {
+    from { transform: translate(0, 0) scale(1); }
+    to { transform: translate(-35px, -25px) scale(1.15); }
+}
+
+@keyframes glow-drift-3 {
+    from { transform: translate(-50%, 0) scale(1); }
+    to { transform: translate(-50%, -20px) scale(1.08); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero__glow--1,
+    .hero__glow--2,
+    .hero__glow--3 {
+        animation: none;
+    }
 }
 
 .hero__content {
@@ -445,7 +605,7 @@
 
 .page-header__content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
 .page-header__title {
@@ -518,7 +678,7 @@
 /* Alternative page-header-content class for backwards compatibility */
 .page-header-content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
 .page-header-content h1 {
@@ -691,6 +851,16 @@
     margin-top: 2px;
 }
 
+/* Flex items default to min-width:auto, so a long unbroken string (the
+   email address) refuses to shrink below its intrinsic width and forces
+   the whole page to scroll horizontally on narrow screens. */
+.footer__contact li > span,
+.footer__contact li > a {
+    min-width: 0;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
 .footer__contact a {
     color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
@@ -736,6 +906,23 @@
     color: var(--color-secondary);
 }
 
+/* Small, unobtrusive utility link — should not compete visually with the
+   copyright/tagline text above it. */
+.footer__staff-link {
+    display: block;
+    width: 100%;
+    margin-top: var(--space-2);
+    font-size: var(--text-xs);
+    color: var(--color-gray-500);
+    text-decoration: none;
+    text-align: center;
+    transition: color var(--transition-fast);
+}
+
+.footer__staff-link:hover {
+    color: var(--color-secondary-light);
+}
+
 /* Footer Responsive */
 @media (max-width: 1023px) {
     .footer__top {
@@ -758,7 +945,7 @@
     }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 767px) {
     .footer__top {
         grid-template-columns: 1fr;
         text-align: center;

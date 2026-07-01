@@ -33,6 +33,15 @@ body {
     overflow-x: hidden;
 }
 
+/* Lock body scroll while the mobile nav overlay is open (toggled by the
+   Navigation class in js/main.js). Locking both html and body avoids
+   iOS Safari's rubber-band scroll leaking through behind the overlay. */
+html.nav-open,
+body.nav-open {
+    overflow: hidden;
+    height: 100%;
+}
+
 /* Improve media defaults */
 img,
 picture,
@@ -80,6 +89,17 @@ a:not([class]) {
     text-decoration-skip-ink: auto;
 }
 
+/* Disable the default mobile-browser tap flash on interactive elements
+   for a more premium, native-app feel. */
+a,
+button,
+input,
+textarea,
+select,
+[role="button"] {
+    -webkit-tap-highlight-color: transparent;
+}
+
 /* Remove all animations for people who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
     html:focus-within {
@@ -94,6 +114,12 @@ a:not([class]) {
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
     }
+}
+
+/* Background/hero videos paused by ReducedMotionVideos (js/main.js) show their
+   poster frame as a static image instead of looping motion. */
+video.is-static {
+    pointer-events: none;
 }
 
 /* ==========================================================================
@@ -201,6 +227,13 @@ i {
 .section--dark {
     background: var(--color-dark);
     color: var(--color-white);
+    position: relative;
+    /* Diagonal edge treatment for stadium-at-night energy: a shallow ~3%
+       clip across the top/bottom edges. Extra padding keeps real content
+       clear of the cut so nothing gets visually clipped. */
+    clip-path: polygon(0 0, 100% 3%, 100% 100%, 0 97%);
+    padding-top: calc(var(--section-padding-y) + var(--space-10));
+    padding-bottom: calc(var(--section-padding-y) + var(--space-10));
 }
 
 .section--gray {
@@ -287,12 +320,33 @@ i {
 .text-dark { color: var(--color-dark); }
 .text-muted { color: var(--color-gray-600); }
 
-/* Gradient text */
+/* Gradient text — animated shimmer via a moving gradient background */
 .text-gradient {
-    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-light) 100%);
+    background: linear-gradient(
+        90deg,
+        var(--color-secondary) 0%,
+        var(--color-secondary-light) 25%,
+        var(--color-secondary) 50%,
+        var(--color-secondary-dark) 75%,
+        var(--color-secondary) 100%
+    );
+    background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: gradient-shift 5s linear infinite;
+}
+
+@keyframes gradient-shift {
+    to {
+        background-position: 200% center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .text-gradient {
+        animation: none;
+    }
 }
 
 .text-xs { font-size: var(--text-xs); }

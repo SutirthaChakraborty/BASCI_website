@@ -137,7 +137,10 @@
     --container-xl: 1280px;
     --container-2xl: 1536px;
     --container-max: 1400px;
-    
+
+    /* Minimum recommended touch target size (WCAG 2.5.5 / Apple HIG) */
+    --tap-target-min: 44px;
+
     /* ========================================
        BORDERS & RADIUS
        ======================================== */
@@ -168,7 +171,16 @@
     --shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.06);
     --shadow-glow-primary: 0 0 40px rgba(var(--color-primary-rgb), 0.3);
     --shadow-glow-secondary: 0 0 40px rgba(var(--color-secondary-rgb), 0.3);
-    
+
+    /* ========================================
+       GLASSMORPHISM
+       ======================================== */
+
+    --glass-bg: rgba(255, 255, 255, 0.06);
+    --glass-bg-light: rgba(255, 255, 255, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.14);
+    --blur-glass: 16px;
+
     /* ========================================
        TRANSITIONS & ANIMATIONS
        ======================================== */

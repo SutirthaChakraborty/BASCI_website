@@ -175,7 +175,7 @@
     }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 767px) {
     .about__stats {
         grid-template-columns: 1fr;
         gap: var(--space-4);
@@ -222,6 +222,14 @@
     z-index: 1;
 }
 
+/* Force a single column below tablet so the 300px minimum track width
+   can't force horizontal overflow on narrow phones (320-375px). */
+@media (max-width: 767px) {
+    .sports__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 .sport-card {
     background: var(--color-white);
     border-radius: var(--radius-2xl);
@@ -234,7 +242,7 @@
 
 .sport-card:hover {
     transform: translateY(-10px);
-    box-shadow: var(--shadow-xl);
+    box-shadow: var(--shadow-xl), var(--shadow-glow-primary);
 }
 
 .sport-card__icon {
@@ -360,6 +368,14 @@
     gap: var(--space-8);
 }
 
+/* Force a single column below tablet so the 280px minimum track width
+   can't force horizontal overflow on narrow phones (320-375px). */
+@media (max-width: 767px) {
+    .team__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 .team__cta {
     text-align: center;
     margin-top: var(--space-12);
@@ -374,6 +390,14 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: var(--space-4);
+}
+
+/* Force a single column below tablet so the 300px minimum track width
+   can't force horizontal overflow on narrow phones (320-375px). */
+@media (max-width: 767px) {
+    .gallery__grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .gallery__item {
@@ -454,6 +478,7 @@
 
 .form-input,
 .form-textarea {
+    min-height: var(--tap-target-min);
     padding: var(--space-4);
     border: 2px solid var(--color-gray-200);
     border-radius: var(--radius-lg);
@@ -529,7 +554,10 @@
 /* CTA Section */
 .cta {
     position: relative;
-    padding: var(--section-padding-y) 0;
+    /* Diagonal edge on the top only (mirrors the section above flowing into
+       it) with extra padding so the title/buttons never sit in the cut. */
+    clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 100%);
+    padding: calc(var(--section-padding-y) + var(--space-8)) 0 var(--section-padding-y);
     text-align: center;
     overflow: hidden;
 }
@@ -666,8 +694,8 @@
 
 .back-to-top {
     position: fixed;
-    bottom: var(--space-8);
-    right: var(--space-8);
+    bottom: calc(var(--space-8) + env(safe-area-inset-bottom));
+    right: calc(var(--space-8) + env(safe-area-inset-right));
     width: 50px;
     height: 50px;
     background: var(--color-primary);
@@ -820,6 +848,14 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: var(--space-4);
+}
+
+/* Force a single column below tablet so the 300px minimum track width
+   can't force horizontal overflow on narrow phones (320-375px). */
+@media (max-width: 767px) {
+    .gallery-page__grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .gallery-item {
@@ -1063,7 +1099,7 @@
     opacity: 0.9;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .gallery-item--featured {
         grid-column: span 1;
         aspect-ratio: 4/3;
@@ -1372,7 +1408,7 @@
     line-height: 1.7;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .about-story__grid {
         grid-template-columns: 1fr;
     }
@@ -1390,9 +1426,18 @@
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 479px) {
     .stats-section__grid {
         grid-template-columns: 1fr;
+    }
+
+    /* Trim card padding on very small phones (iPhone SE class) so content
+       has more breathing room without risking horizontal scroll. */
+    .pricing-card,
+    .sport-card,
+    .mission__card,
+    .offering-card {
+        padding: var(--space-6);
     }
 }
 
@@ -1489,6 +1534,15 @@
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: var(--space-8);
     align-items: stretch;
+}
+
+/* Force a single column below tablet so the 280px minimum track width
+   can't force horizontal overflow on narrow phones (320-375px). */
+@media (max-width: 767px) {
+    .events-page__grid,
+    .sessions__grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .year-calendar {
@@ -1615,7 +1669,7 @@
     }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 767px) {
     .year-calendar__months {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -1692,7 +1746,7 @@
     color: var(--color-secondary);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 767px) {
     .session-card {
         flex-direction: column;
         gap: var(--space-4);
@@ -1816,7 +1870,7 @@
     font-size: var(--text-sm);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 767px) {
     .event-list-item {
         flex-direction: column;
     }
@@ -1922,6 +1976,7 @@
 .form-group textarea,
 .form-group select {
     width: 100%;
+    min-height: var(--tap-target-min);
     padding: var(--space-4);
     border: 2px solid var(--color-gray-200);
     border-radius: var(--radius-lg);
@@ -1948,7 +2003,7 @@
     gap: var(--space-6);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .contact-grid {
         grid-template-columns: 1fr;
     }
@@ -2052,6 +2107,14 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: var(--space-6);
+}
+
+/* Force a single column below tablet so the 280px minimum track width
+   can't force horizontal overflow on narrow phones (320-375px). */
+@media (max-width: 767px) {
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .faq-item {
